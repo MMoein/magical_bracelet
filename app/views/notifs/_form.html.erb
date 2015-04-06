@@ -1,0 +1,25 @@
+<%= form_for(@notif) do |f| %>
+  <% if @notif.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notif.errors.count, "error") %> prohibited this notif from being saved:</h2>
+
+      <ul>
+      <% @notif.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :rule_id %><br>
+    <%= f.number_field :rule_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

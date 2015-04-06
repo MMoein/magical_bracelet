@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bracelet:</strong>
+  <%= @rule.bracelet_id %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @rule.action_id %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @rule.event_id %>
+</p>
+
+<p>
+  <strong>Until:</strong>
+  <%= @rule.until_id %>
+</p>
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

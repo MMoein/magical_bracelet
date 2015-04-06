@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bracelet_id: 1
+  action_id: 1
+  event_id: 1
+  until_id: 1
+
+two:
+  bracelet_id: 1
+  action_id: 1
+  event_id: 1
+  until_id: 1

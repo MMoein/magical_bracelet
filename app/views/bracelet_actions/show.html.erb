@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @bracelet_action.color %>
+</p>
+
+<p>
+  <strong>Shake:</strong>
+  <%= @bracelet_action.shake %>
+</p>
+
+<%= link_to 'Edit', edit_bracelet_action_path(@bracelet_action) %> |
+<%= link_to 'Back', bracelet_actions_path %>

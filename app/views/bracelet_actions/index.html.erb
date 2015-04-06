@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bracelet Actions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Shake</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bracelet_actions.each do |bracelet_action| %>
+      <tr>
+        <td><%= bracelet_action.color %></td>
+        <td><%= bracelet_action.shake %></td>
+        <td><%= link_to 'Show', bracelet_action %></td>
+        <td><%= link_to 'Edit', edit_bracelet_action_path(bracelet_action) %></td>
+        <td><%= link_to 'Destroy', bracelet_action, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bracelet action', new_bracelet_action_path %>

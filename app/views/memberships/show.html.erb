@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bracelet:</strong>
+  <%= @membership.bracelet_id %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @membership.group_id %>
+</p>
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @notif.date %>
+</p>
+
+<p>
+  <strong>Rule:</strong>
+  <%= @notif.rule_id %>
+</p>
+
+<%= link_to 'Edit', edit_notif_path(@notif) %> |
+<%= link_to 'Back', notifs_path %>

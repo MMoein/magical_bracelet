@@ -1,0 +1,25 @@
+<%= form_for(@bracelet_action) do |f| %>
+  <% if @bracelet_action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bracelet_action.errors.count, "error") %> prohibited this bracelet_action from being saved:</h2>
+
+      <ul>
+      <% @bracelet_action.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.number_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :shake %><br>
+    <%= f.check_box :shake %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

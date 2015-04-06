@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Untils</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @untils.each do |until| %>
+      <tr>
+        <td><%= until.rule_id %></td>
+        <td><%= link_to 'Show', until %></td>
+        <td><%= link_to 'Edit', edit_until_path(until) %></td>
+        <td><%= link_to 'Destroy', until, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Until', new_until_path %>
