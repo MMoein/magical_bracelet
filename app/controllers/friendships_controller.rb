@@ -1,10 +1,16 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!#, except => [:index]
   before_action :set_friendship, only: [:show, :edit, :update, :destroy]
 
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.all
+    if  user_signed_in?
+      @friendships = Friendship.all
+    else
+      redirect_to new_user_session_path
+    end
+
   end
 
   # GET /friendships/1
@@ -14,6 +20,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/new
   def new
+#    user_signed_in?
     @friendship = Friendship.new
   end
 
