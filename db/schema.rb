@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507070930) do
+ActiveRecord::Schema.define(version: 20150508165751) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "color"
@@ -87,9 +87,11 @@ ActiveRecord::Schema.define(version: 20150507070930) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "group_id"
+    t.integer  "user_id"
   end
 
   add_index "rules", ["group_id"], name: "index_rules_on_group_id"
+  add_index "rules", ["user_id"], name: "index_rules_on_user_id"
 
   create_table "untils", force: :cascade do |t|
     t.integer  "rule_id"

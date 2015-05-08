@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :bracelets
   has_many :friendships
+  has_many :rules
 end
