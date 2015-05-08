@@ -2,6 +2,7 @@ class SessionsController < Devise::SessionsController
   # skip_before_filter :verify_authenticity_token,
   #                    :if => Proc.new { |c| c.request.format == 'application/json' }
   skip_before_filter :verify_authenticity_token, :only => :create
+
   respond_to :json
 # This controller provides a JSON version of the Devise::SessionsController and
 # is compatible with the use of SimpleTokenAuthentication.
