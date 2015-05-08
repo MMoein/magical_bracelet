@@ -22,7 +22,22 @@ Rails.application.routes.draw do
   resources :profiles
 
   devise_for :users
+  # namespace :api do
+  #   namespace :v1 do
+  #     devise_scope :user do
+  #       post  'sessions' => 'sessions#create', :as => 'login'
+  #       delete 'sessions' => 'sessions#destroy', :as => 'logout'
+  #     end
+  #   end
+  # end
+  devise_scope :user do
+    post 'sign_in' => 'sessions#create', :as => 'login'
+    delete 'sessions' => 'sessions#destroy', :as => 'logout'
+  end
   root to: "home#index"
+  # devise_scope :user do
+  #   post 'login' => 'sessions#create', :as => :login
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
