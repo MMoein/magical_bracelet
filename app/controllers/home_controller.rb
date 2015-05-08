@@ -1,10 +1,6 @@
 class HomeController < ApplicationController
-  # skip_before_filter :authenticate_user!
-  # prepend_before_filter :require_no_authentication
-  # skip_before_filter :require_no_authentication
-  # before_action :require_no_authentication, only: :index
 
-	def index
+	def index1
     @sherv = "Hello World!"
 	end
 end

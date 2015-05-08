@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'app/getAction'
 
   resources :friendships
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     post 'sign_in' => 'sessions#create', :as => 'login'
     delete 'sessions' => 'sessions#destroy', :as => 'logout'
   end
-  root to: "home#index"
+  root to: "home#index1"
   # devise_scope :user do
   #   post 'login' => 'sessions#create', :as => :login
   # end
