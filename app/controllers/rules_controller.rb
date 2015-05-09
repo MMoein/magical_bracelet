@@ -79,12 +79,12 @@ class RulesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_rule
-      @rule = Rule.find(params[:id])
-    end
+    # def set_rule
+    #   @rule = Rule.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def rule_params
-      params.require(:rule).permit(:bracelet_id, :action_id, :event_id, :until_id)
-    end
+    # def rule_params
+    #   params.require(:rule).permit(:bracelet_id, :action_id, :event_id, :until_id)
+    # end
 end
