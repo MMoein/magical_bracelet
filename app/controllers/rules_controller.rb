@@ -5,7 +5,7 @@ class RulesController < ApplicationController
   # GET /rules.json
   def index
 
-    @rules = Rule.find_by_user_id(current_user.id)
+    @rules = Rule.where(user_id:current_user.id)
     @events = Event.all
   end
 
@@ -27,17 +27,30 @@ class RulesController < ApplicationController
   # POST /rules
   # POST /rules.json
   def create
-    @rule = Rule.new(rule_params)
+    # if params[:color].nil?
+    n = Rule.new
+    action = Action.new
+    action.color= params[:color]
+    action.shake=FALSE
+    action.save
+    n.action_id = action
+    # if n.id?
+    n.user_id = current_user.id
+    # end
+    n.save
+    redirect_to '/rules'
 
-    respond_to do |format|
-      if @rule.save
-        format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
-        format.json { render :show, status: :created, location: @rule }
-      else
-        format.html { render :new }
-        format.json { render json: @rule.errors, status: :unprocessable_entity }
-      end
-    end
+    # @rule = Rule.new(rule_params)
+
+    # respond_to do |format|
+    #   if @rule.save
+    #     format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
+    #     format.json { render :show, status: :created, location: @rule }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @rule.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /rules/1
