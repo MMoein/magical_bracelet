@@ -4,7 +4,9 @@ class RulesController < ApplicationController
   # GET /rules
   # GET /rules.json
   def index
-    @rules = Rule.all
+
+    @rules = Rule.find_by_user_id(current_user.id)
+    @events = Event.all
   end
 
   # GET /rules/1
@@ -14,7 +16,8 @@ class RulesController < ApplicationController
 
   # GET /rules/new
   def new
-    @rule = Rule.new
+    @events = [1,2,3,4]
+
   end
 
   # GET /rules/1/edit

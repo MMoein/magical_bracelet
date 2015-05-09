@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508165751) do
+ActiveRecord::Schema.define(version: 20150508201423) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "color"
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(version: 20150508165751) do
   create_table "notifs", force: :cascade do |t|
     t.datetime "date"
     t.integer  "rule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.boolean  "is_consumed"
   end
 
   create_table "profiles", force: :cascade do |t|
