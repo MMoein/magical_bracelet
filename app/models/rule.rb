@@ -11,7 +11,16 @@ class Rule < ActiveRecord::Base
     @current_step || steps.first
   end
   def create_notif
-    Notif.create(:rule_id => self.id)
+    notifications = Notif.where(:rule_id => self.id)
+    already_exists = false
+    notifications.each do |n|
+      unless n.is_consumed
+        already_exists = true
+      end
+    end
+    if not already_exists
+      Notif.create(:rule_id => self.id)
+    end
   end
 
   def steps

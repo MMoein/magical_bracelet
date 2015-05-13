@@ -22,7 +22,7 @@ class RulesController < ApplicationController
     session[:rule_params] ||= {}
     @rule = Rule.new(session[:rule_params])
     @rule.current_step = session[:rule_step]
-    @events = [1,2,3,4]
+    @events = ['weather',]
     @step = "event_select"
   end
 
@@ -54,6 +54,7 @@ class RulesController < ApplicationController
         @rule.previous_step
         flash[:notice] = 'Invalid city or country'
       else
+        flash[:notice] = nil
         ev = WeatherEvent.new
         ev[:city] = city
         ev.country = country
@@ -89,32 +90,6 @@ class RulesController < ApplicationController
       flash[:notice] = session[:event]
       redirect_to '/rules'
     end
-    # if params[:color].nil?
-    # n = Rule.new
-    # action = Action.new
-    # action.color= params[:color]
-    # action.shake=FALSE
-    # action.save
-    # n.action_id = action
-    # if n.id?
-    # n.user_id = current_user.id
-    # end
-    # n.save
-    # redirect_to '/rules'
-
-
-
-    # @rule = Rule.new(rule_params)
-
-    # respond_to do |format|
-    #   if @rule.save
-    #     format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
-    #     format.json { render :show, status: :created, location: @rule }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @rule.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /rules/1

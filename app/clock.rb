@@ -8,11 +8,6 @@ handler do |job|
 
   case job
     when 'weather_check'
-      # Mydata.create degree: input_data
-      # work sequence:
-      # for all rules with weather_events event
-      # check status with a request
-      # create a notif if needed
       rules = Rule.where.not(:weather_events_id => nil)
       rules.each do |rule|
         ev = WeatherEvent.find(rule.weather_events_id)
@@ -36,15 +31,11 @@ handler do |job|
           end
         end
       end
-      # WeatherEvent.all
-      puts "this shit is working man!"
-    # when 'some_other_task'
-    #   ...
     else
       puts "Couldn't find your job!"
   end
 
 end
 
-every(30.seconds, 'weather_check')
+every(3.minutes, 'weather_check')
 end
