@@ -1,19 +1,42 @@
-<% if @event == '1' %>
+<% if @event == 'weather' %>
     <%= form_tag('/rules',method: :post ) do |f| %>
+        <div class="col-sm-5 col-sm-offset-3">
         <div class="field">
-          <%= select_tag "type", options_for_select(@types) %>
+          <%= select_tag "type", options_for_select(@types) , :class=>'form-control' %>
         </div>
         <div class="field">
           <%= label_tag :City %><br>
-          <%= text_field_tag :City %>
+          <%= text_field_tag :City,"" ,:class=>'form-control' %>
         </div>
         <div class="field">
           <%= label_tag :Country %><br>
-          <%= text_field_tag :Country %>
+          <%= text_field_tag :Country,"" ,:class=>'form-control' %>
         </div>
+          </div>
+        <div class="col-sm-3 col-sm-offset-3">
+
         <div class="actions">
-          <%= submit_tag("Continue") %>
-          <%= submit_tag("Back", :name => :Back) %>
+          <%= submit_tag("Continue", :class=>'form-control') %>
+          <%= submit_tag("Back", :name => :Back, :class=>'form-control') %>
         </div>
+            </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     <%end%>
 <%end%>

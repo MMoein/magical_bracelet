@@ -1,5 +1,18 @@
-<h2>hello bitch</h2>
 <%= form_tag("/rules", method: "post") do %>
-    <%= select_tag :event, options_for_select(@events) %>
-    <%= submit_tag("Continue") %>
+    <div class="col-sm-5 col-sm-offset-3">
+    <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
+      </div>
+
+    <div class="col-sm-2 col-sm-offset-3">
+
+    <%= submit_tag("Continue", :class => 'form-control') %>
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 <% end %>

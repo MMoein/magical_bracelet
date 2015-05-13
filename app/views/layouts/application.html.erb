@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Proj</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-<%= yield %>
 
-<ul class="hmenu">
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>
-</ul>
+<header id="header">
+  <div class="top-bar">
+    <div class="row">
+      <div class="col-sm-6 col-xs-4">
+        <div class="top-number"><p><i class="fa fa-phone-square"></i> +۹۸ - ۸۸۰۰۱۲۳۴ </p></div>
+      </div>
+      <div class="col-sm-6 col-xs-8 col-md-5">
+        <div class="social">
+
+          <div class="search">
+            <% if user_signed_in? %>
+                <li>
+                  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                </li>
+            <% else %>
+                <li>
+                  <%= link_to('ورود', new_user_session_path)  %>
+                </li>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    </div><!--/.container-->
+  </div><!--/.top-bar-->
+
+  <nav class="navbar navbar-inverse" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <li><a href="about-us.html">درباره ی ما</a></li>
+          <li><a href="services.html">خدمات</a></li>
+          <li><a href="/rules/new">قوانین</a></li>
+          <li><a href="portfolio.html">پروفایل</a></li>
+          <% unless user_signed_in?  %>
+
+        <li>  <%= link_to('ثبت نام', new_user_registration_path)  %></li>
+          <%end%>
+              <li class="active"><a href="/">خونه</a></li>
+        </ul>
+      </div>
+    </div><!--/.container-->
+  </nav><!--/nav-->
+
+</header><!--/header-->
+<%if notice%>
+<div class="alert alert-info">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+<%end%>
+
+<p>
+<%= yield %>
+</p>
+
+
+<footer id="footer" class="midnight-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        &copy; 2015 <a target="_blank" href="#" >دستبند جادویی</a>. تمامی حقوق این سایت محفوظ است.
+      </div>
+      <div class="col-sm-6">
+        <ul class="pull-right">
+          <li><a href="services.html">خدمات</a></li>
+          <li><a href="about-us.html">درباره ی ما</a></li>
+          <li><a href="index.html">خونه</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
 
 </body>
 </html>

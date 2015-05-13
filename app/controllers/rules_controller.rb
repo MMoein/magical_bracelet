@@ -40,7 +40,7 @@ class RulesController < ApplicationController
     @rule = Rule.new(session[:rule_params])
     @rule.current_step = session[:rule_step]
     @types = ['rain', 'sunny', 'cloudy', 'snowy']
-    if @rule.current_step == 'event_create' and session[:event] == '1' and not params[:Back]
+    if @rule.current_step == 'event_create' and session[:event] == 'weather' and not params[:Back]
       city= params[:City]
       country = params[:Country]
       # success = nil
@@ -72,7 +72,7 @@ class RulesController < ApplicationController
       @rule.previous_step
     elsif @rule.last_step?
       @rule.action_id = session[:action_id]
-      if session[:event] == '1'
+      if session[:event] == 'weather'
         @rule.weather_events_id = session[:event_id]
       else
         @rule.event_id = session[:event_id]
