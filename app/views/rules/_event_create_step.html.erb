@@ -1,0 +1,19 @@
+<% if @event == '1' %>
+    <%= form_tag('/rules',method: :post ) do |f| %>
+        <div class="field">
+          <%= select_tag "type", options_for_select(@types) %>
+        </div>
+        <div class="field">
+          <%= label_tag :City %><br>
+          <%= text_field_tag :City %>
+        </div>
+        <div class="field">
+          <%= label_tag :Country %><br>
+          <%= text_field_tag :Country %>
+        </div>
+        <div class="actions">
+          <%= submit_tag("Continue") %>
+          <%= submit_tag("Back", :name => :Back) %>
+        </div>
+    <%end%>
+<%end%>

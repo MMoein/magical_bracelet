@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :weather_events, :path => 'weather', :only => [:new, :create]
+  # get 'weather_events/new'
+  # post 'weather_events/create', :to => 'weather_events#create', :as => 'weather_events_path'
+
   get 'app/getAction'
 
   resources :friendships

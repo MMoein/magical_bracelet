@@ -69,6 +69,6 @@ class BraceletActionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bracelet_action_params
-      params.require(:bracelet_action).permit(:color, :shake)
+      params.require(:bracelet_action).permit(:colour, :shake)
     end
 end

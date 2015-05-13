@@ -1,0 +1,5 @@
+<h2>hello bitch</h2>
+<%= form_tag("/rules", method: "post") do %>
+    <%= select_tag :event, options_for_select(@events) %>
+    <%= submit_tag("Continue") %>
+<% end %>

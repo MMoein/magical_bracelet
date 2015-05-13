@@ -1,10 +1,5 @@
 <h1>New Rule</h1>
 
-<%= form_tag("/rules", method: "post") do %>
-    <%= label_tag(:event, "select color") %>
-    <%= select_tag :event, options_for_select(@events) %>
-    <%= label_tag(:color, "select color") %>
-    <%= text_field_tag(:color, "66ff00", :class => 'color') %>
-    <%= submit_tag("Submit") %>
-<% end %>
+<%= render :partial => "#{@rule.current_step}_step" %>
+
 

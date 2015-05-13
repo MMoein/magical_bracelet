@@ -71,6 +71,6 @@ class BraceletsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bracelet_params
-      params.require(:bracelet).permit(:color, :user_id, :is_shaking)
+      params.require(:bracelet).permit(:colour, :user_id, :is_shaking)
     end
 end

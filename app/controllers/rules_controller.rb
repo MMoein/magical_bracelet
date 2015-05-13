@@ -1,3 +1,5 @@
+require 'net/http'
+
 class RulesController < ApplicationController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
 
@@ -16,8 +18,12 @@ class RulesController < ApplicationController
 
   # GET /rules/new
   def new
-    @events = [1,2,3,4]
 
+    session[:rule_params] ||= {}
+    @rule = Rule.new(session[:rule_params])
+    @rule.current_step = session[:rule_step]
+    @events = [1,2,3,4]
+    @step = "event_select"
   end
 
   # GET /rules/1/edit
@@ -27,18 +33,76 @@ class RulesController < ApplicationController
   # POST /rules
   # POST /rules.json
   def create
+    @events = ['weather',]
+    session[:event] = params[:event] if params[:event]
+    @event = session[:event]
+    session[:rule_params].deep_merge!(params[:rule]) if params[:rule]
+    @rule = Rule.new(session[:rule_params])
+    @rule.current_step = session[:rule_step]
+    @types = ['rain', 'sunny', 'cloudy', 'snowy']
+    if @rule.current_step == 'event_create' and session[:event] == '1' and not params[:Back]
+      city= params[:City]
+      country = params[:Country]
+      # success = nil
+      # while success.nil?
+      res = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{city},#{country}")
+      if res.code == 200
+        body = JSON.parse res.body
+      end
+      if body and (body['cod'] == '404' or res.code != 200)
+        # wrong city, country
+        @rule.previous_step
+        flash[:notice] = 'Invalid city or country'
+      else
+        ev = WeatherEvent.new
+        ev[:city] = city
+        ev.country = country
+        ev.weather = params[:type]
+        ev.save
+        session[:event_id] = ev.id
+      end
+      elsif @rule.current_step == 'action_select'
+        action = Action.new
+        action.colour = 'FF'+params[:color]
+        action.save
+        session[:action_id] = action.id
+    end
+    if params[:Back]
+      @rule.previous_step
+    elsif @rule.last_step?
+      @rule.action_id = session[:action_id]
+      if session[:event] == '1'
+        @rule.weather_events_id = session[:event_id]
+      else
+        @rule.event_id = session[:event_id]
+      end
+      @rule.user_id = current_user.id
+      @rule.save
+    else
+      @rule.next_step
+    end
+    session[:rule_step] = @rule.current_step
+    if @rule.new_record?
+      render "new"
+    else
+      session[:rule_step] = session[:rule_params] = nil
+      flash[:notice] = session[:event]
+      redirect_to '/rules'
+    end
     # if params[:color].nil?
-    n = Rule.new
-    action = Action.new
-    action.color= params[:color]
-    action.shake=FALSE
-    action.save
-    n.action_id = action
+    # n = Rule.new
+    # action = Action.new
+    # action.color= params[:color]
+    # action.shake=FALSE
+    # action.save
+    # n.action_id = action
     # if n.id?
-    n.user_id = current_user.id
+    # n.user_id = current_user.id
     # end
-    n.save
-    redirect_to '/rules'
+    # n.save
+    # redirect_to '/rules'
+
+
 
     # @rule = Rule.new(rule_params)
 

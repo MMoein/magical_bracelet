@@ -1,0 +1,11 @@
+<h2>hello once again bitch</h2>
+<%= form_tag("/rules", method: "post") do %>
+
+
+    <%= label_tag(:color, "select color") %>
+    <%= text_field_tag(:color, "66ff00", :class => 'color') %>
+
+
+    <%= submit_tag("Continue") %>
+    <%= submit_tag("Back", :name => :Back) %>
+<% end %>

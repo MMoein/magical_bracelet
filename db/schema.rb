@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508201423) do
+ActiveRecord::Schema.define(version: 20150512120950) do
 
   create_table "actions", force: :cascade do |t|
-    t.integer  "color"
     t.boolean  "shake"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "colour"
   end
 
   create_table "bracelet_actions", force: :cascade do |t|
@@ -85,14 +85,16 @@ ActiveRecord::Schema.define(version: 20150508201423) do
     t.integer  "action_id"
     t.integer  "event_id"
     t.integer  "until_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "group_id"
     t.integer  "user_id"
+    t.integer  "weather_events_id"
   end
 
   add_index "rules", ["group_id"], name: "index_rules_on_group_id"
   add_index "rules", ["user_id"], name: "index_rules_on_user_id"
+  add_index "rules", ["weather_events_id"], name: "index_rules_on_weather_events_id"
 
   create_table "untils", force: :cascade do |t|
     t.integer  "rule_id"
@@ -120,5 +122,13 @@ ActiveRecord::Schema.define(version: 20150508201423) do
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weather_events", force: :cascade do |t|
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "weather",    default: "sunny", null: false
+  end
 
 end
