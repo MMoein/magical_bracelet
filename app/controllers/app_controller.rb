@@ -10,6 +10,7 @@ class AppController < ApplicationController
       unless n.is_consumed?
         color = Action.find(Rule.find(n.rule_id).action_id).colour
         n.is_consumed = TRUE
+        n.save
         break
       end
     end
