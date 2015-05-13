@@ -4,7 +4,7 @@ class AppController < ApplicationController
     # @shit = 'hell no!'
     # n = notifications.first
     # @n = current_user.rules.joins(:notifs).merge(Notif.all).first
-    notifs = Notif.joins("LEFT JOIN rules ON rules.user_id = #{current_user.id}")
+    notifs = Notif.all#.joins("LEFT JOIN rules ON rules.user_id = #{current_user.id}")
     color = nil
     notifs.each do |n|
       unless n.is_consumed?
