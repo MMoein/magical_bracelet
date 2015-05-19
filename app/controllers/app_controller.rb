@@ -20,4 +20,31 @@ class AppController < ApplicationController
       format.json { render json: [color] }#render as color_code: FF002233
       end
   end
+  def requests
+    @ev = EventRequest.where(:User_id => current_user.id, :is_used => nil).first
+
+  end
+  def decide
+
+    if params[:Accept]
+
+      ev_req = EventRequest.find(Integer(params[:ev_id]))
+      if ev_req.User_id == current_user.id
+        ev = CustomEvent.find(ev_req.CustomEvent_id)
+        rule = Rule.new
+        rule.custom_events_id = ev.id
+        action = Action.new
+        action.colour = ev.color
+        action.save
+        rule.user_id = current_user.id
+        rule.action_id = action.id
+        rule.save
+        ev_req.is_used = true
+        ev_req.save
+        redirect_to '/'
+
+      end
+    end
+  end
+
 end
