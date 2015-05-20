@@ -41,10 +41,17 @@ class AppController < ApplicationController
         rule.save
         ev_req.is_used = true
         ev_req.save
-        redirect_to '/'
 
       end
+    else
+      ev_req = EventRequest.find(Integer(params[:ev_id]))
+      if ev_req.User_id == current_user.id
+        ev_req.is_used= true
+        ev_req.save
+      end
     end
+    redirect_to '/'
+
   end
 
 end

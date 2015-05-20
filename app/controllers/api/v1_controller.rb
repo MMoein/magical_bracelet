@@ -34,6 +34,7 @@ class Api::V1Controller < ApplicationController
     end
   end
   def add_user
+    description = params[:description]
     response = 'error'
     if params[:email]
       user = User.where(:email => params[:email]).first
@@ -44,6 +45,7 @@ class Api::V1Controller < ApplicationController
           ev = CustomEvent.where(:token => params[:token]).first
           unless ev.nil?
             req.CustomEvent_id=ev.id
+            req.description = description
             req.save
             response = 'success'
           end
