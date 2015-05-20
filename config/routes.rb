@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # resources :v1
   namespace 'api' do
     get 'v1', :to => 'v1#get' , :defaults => { :format => 'json' }
-    get 'v1/add_user', :to => 'v1#add_user', :defaults => { :format => 'json' }
-    get 'v1/trigger', :to => 'v1#trigger', :defaults => { :format => 'json' }
+    post 'v1/add_user', :to => 'v1#add_user', :defaults => { :format => 'json' }
+    post 'v1/trigger', :to => 'v1#trigger', :defaults => { :format => 'json' }
   end
   resources :friendships
 
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   get '/:services', :to => 'application#services'
   root to: "home#index1"
   # devise_scope :user do
-  #   post 'login' => 'sessions#create', :as => :login
+  #  r post 'login' => 'sessions#create', :as => :login
   # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

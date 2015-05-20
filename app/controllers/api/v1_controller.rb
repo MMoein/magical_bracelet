@@ -1,5 +1,6 @@
 class Api::V1Controller < ApplicationController
-
+  # skip_before_filter :verify_authenticity_token, :only => :add_user
+  protect_from_forgery with: :null_session
   def trigger
     response = 'error'
     ev = CustomEvent.where(:token => params[:token]).first
