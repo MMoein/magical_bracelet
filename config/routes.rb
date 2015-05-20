@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   # post 'weather_events/create', :to => 'weather_events#create', :as => 'weather_events_path'
 
   get 'app/getAction'
-
+  # resources :v1
+  namespace 'api' do
+    get 'v1', :to => 'v1#get' , :defaults => { :format => 'json' }
+    get 'v1/add_user', :to => 'v1#add_user', :defaults => { :format => 'json' }
+    get 'v1/trigger', :to => 'v1#trigger', :defaults => { :format => 'json' }
+  end
   resources :friendships
 
   resources :bracelet_actions
@@ -28,6 +33,8 @@ Rails.application.routes.draw do
 
   resources :profiles
 
+  get '/requests', :to => 'app#requests'
+  post '/decide', :to => 'app#decide'
   devise_for :users
   devise_scope :user do
     post 'sign_in' => 'sessions#create', :as => 'login'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512120950) do
+ActiveRecord::Schema.define(version: 20150518081017) do
 
   create_table "actions", force: :cascade do |t|
     t.boolean  "shake"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 20150512120950) do
   end
 
   add_index "bracelets", ["user_id"], name: "index_bracelets_on_user_id"
+
+  create_table "custom_events", force: :cascade do |t|
+    t.string   "token"
+    t.string   "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_requests", force: :cascade do |t|
+    t.integer  "User_id"
+    t.integer  "CustomEvent_id"
+    t.boolean  "is_used"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer  "until_id"
@@ -90,8 +105,10 @@ ActiveRecord::Schema.define(version: 20150512120950) do
     t.integer  "group_id"
     t.integer  "user_id"
     t.integer  "weather_events_id"
+    t.integer  "custom_events_id"
   end
 
+  add_index "rules", ["custom_events_id"], name: "index_rules_on_custom_events_id"
   add_index "rules", ["group_id"], name: "index_rules_on_group_id"
   add_index "rules", ["user_id"], name: "index_rules_on_user_id"
   add_index "rules", ["weather_events_id"], name: "index_rules_on_weather_events_id"
