@@ -4,7 +4,7 @@ class AppController < ApplicationController
     # @shit = 'hell no!'
     # n = notifications.first
     # @n = current_user.rules.joins(:notifs).merge(Notif.all).first
-    notifs = Notif.all#.joins("LEFT JOIN rules ON rules.user_id = #{current_user.id}")
+    notifs = Notif.joins("LEFT JOIN rules ON rules.user_id = #{current_user.id}")
     color = nil
     notifs.each do |n|
       unless n.is_consumed?
@@ -41,10 +41,17 @@ class AppController < ApplicationController
         rule.save
         ev_req.is_used = true
         ev_req.save
-        redirect_to '/'
 
       end
+    else
+      ev_req = EventRequest.find(Integer(params[:ev_id]))
+      if ev_req.User_id == current_user.id
+        ev_req.is_used= true
+        ev_req.save
+      end
     end
+    redirect_to '/'
+
   end
 
 end

@@ -1,18 +1,11 @@
-<%= form_tag("/rules", method: "post") do %>
-    <div class="col-sm-5 col-sm-offset-3">
-    <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
+<div class="container" dir="ltr">
+  <%= form_tag("/rules", method: "post") do %>
+      <div class="col-sm-5 col-sm-offset-3">
+        <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
       </div>
-
-    <div class="col-sm-2 col-sm-offset-3">
-
-    <%= submit_tag("Continue", :class => 'form-control') %>
+      <div class="col-sm-2 col-sm-offset-3">
+      <br>
+        <%= submit_tag("Continue", :class => 'form-control') %>
+      </div>
+  <% end %>
 </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-<% end %>

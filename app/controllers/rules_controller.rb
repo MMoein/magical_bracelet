@@ -87,8 +87,8 @@ class RulesController < ApplicationController
       render "new"
     else
       session[:rule_step] = session[:rule_params] = nil
-      flash[:notice] = session[:event]
-      redirect_to '/rules'
+      flash[:notice] = 'قانون با موفقیت ساخته شد!' #session[:event]
+      redirect_to '/'
     end
   end
 

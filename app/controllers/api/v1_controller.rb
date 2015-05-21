@@ -1,5 +1,6 @@
 class Api::V1Controller < ApplicationController
-
+  # skip_before_filter :verify_authenticity_token, :only => :add_user
+  protect_from_forgery with: :null_session
   def trigger
     response = 'error'
     ev = CustomEvent.where(:token => params[:token]).first
@@ -33,6 +34,7 @@ class Api::V1Controller < ApplicationController
     end
   end
   def add_user
+    description = params[:description]
     response = 'error'
     if params[:email]
       user = User.where(:email => params[:email]).first
@@ -43,6 +45,7 @@ class Api::V1Controller < ApplicationController
           ev = CustomEvent.where(:token => params[:token]).first
           unless ev.nil?
             req.CustomEvent_id=ev.id
+            req.description = description
             req.save
             response = 'success'
           end

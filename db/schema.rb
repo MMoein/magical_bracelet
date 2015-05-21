@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518081017) do
+ActiveRecord::Schema.define(version: 20150520094106) do
 
   create_table "actions", force: :cascade do |t|
     t.boolean  "shake"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150518081017) do
     t.boolean  "is_used"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "description"
   end
 
   create_table "events", force: :cascade do |t|
