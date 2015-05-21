@@ -4,13 +4,14 @@
   <%= devise_error_messages! %>
     <div class="col-sm-5 col-sm-offset-3">
 
+      <br><br><br><br><br><br>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :"ایمیل" %><br />
     <%= f.email_field :email,:class => 'form-control' , autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :"رمز عبور" %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -18,16 +19,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :"تایید رمز عبور" %><br />
     <%= f.password_field :password_confirmation,:class => 'form-control' , autocomplete: "off" %>
   </div>
 </div>
-    <div class="col-sm-5 col-sm-offset-4">
+    <div class="col-sm-5 col-sm-offset-1">
 
+    <br><br>
     <div class="actions">
-    <%= f.submit "Sign up",:class =>'btn btn-primary btn-lg' %>
+    <%= f.submit "ثبت نام",:class =>'btn btn-primary btn-lg' %>
+    <br><br><br><br><br><br><br><br>
   </div>
-        </div>
+    </div>
 <% end %>
-  </div>
+  
+</div>
 
