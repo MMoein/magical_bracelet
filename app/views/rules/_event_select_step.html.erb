@@ -1,11 +1,14 @@
 <div class="container" dir="ltr">
   <%= form_tag("/rules", method: "post") do %>
-      <div class="col-sm-5 col-sm-offset-3">
+  		<br><br><br><br>
+      <div class="col-sm-5 col-sm-offset-4">
         <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
       </div>
-      <div class="col-sm-2 col-sm-offset-3">
+      <br><br><br>
+      <div class="col-sm-2 col-sm-offset-5">
       <br>
         <%= submit_tag("Continue", :class => 'form-control') %>
       </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <% end %>
 </div>
