@@ -1,5 +1,5 @@
 <section id="weather">
-    <div class="container">
+    <div class="container" dir="ltr">
         <div class="card card-container">
             <h2 style="text-align:center">چه آب و هوایی؟</h2>
             <br>  
@@ -9,11 +9,11 @@
                         <%= select_tag "type", options_for_select(@types) , :class=>'form-control' %>
                       </div>
                       <div class="field">
-                        <%= label_tag :"شهر" %><br>
+                        <%= label_tag :"city" %><br>
                         <%= text_field_tag :City,"" ,:class=>'form-control' %>
                       </div>
                       <div class="field">
-                        <%= label_tag :"کشور" %><br>
+                        <%= label_tag :"country" %><br>
                         <%= text_field_tag :Country,"" ,:class=>'form-control' %>
                       </div>
                       <br>

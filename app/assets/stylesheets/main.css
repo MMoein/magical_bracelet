@@ -638,7 +638,7 @@ input.search-form:hover {
   opacity: 0;
   border-radius: 0;
   background: #c52d2f;
-  color: #fff;
+  color: #6126ff;
   vertical-align: middle;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
@@ -655,7 +655,7 @@ input.search-form:hover {
   border-radius: 0;
   background: transparent;
   text-align: center;
-  color: #fff;
+  color: #000000;
 }
 
 .recent-work-wrap:hover .overlay {
@@ -663,32 +663,32 @@ input.search-form:hover {
 }
 
 #services {
-  background: #C2FFD6 url('./services/bg_services.jpg');
+  background: #ff1427 url('./services/bg_services.jpg');
   background-size: cover;
 }
 
 #simple {
-  background: #white;
+  background: #000;
   background-size: cover;
   height: 700px;
 }
 
 #back {
-  background: #C2FFD6 url('./w4.jpg');
-  background-size: cover;
-  height: 700px;
+  background: #323E34;
+  /*background-size: cover;*/
+  /*height: 700px;*/
 }
 
 #weather {
-  background: #C2FFD6 url('./w3.jpg');
+  background: #323E34 url('./w3.jpg');
   background-size: cover;
   height: 700px;
 }
 
 #lego {
-  background: #C2FFD6 url('./lego.jpg');
-  background-size: cover;
-  height: 700px;
+  background: #323E34
+  /*background-size: cover;*/
+  /*height: 700px;*/
 }
 
 #services .lead,
