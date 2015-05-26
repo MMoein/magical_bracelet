@@ -1,11 +1,19 @@
-<div class="container" dir="ltr">
-  <%= form_tag("/rules", method: "post") do %>
-      <div class="col-sm-5 col-sm-offset-3">
-        <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
-      </div>
-      <div class="col-sm-2 col-sm-offset-3">
-      <br>
-        <%= submit_tag("Continue", :class => 'form-control') %>
-      </div>
-  <% end %>
-</div>
+<section id="back">
+    <div class="container">
+        <div class="card card-container">
+            <h2 style="text-align:center">انتخاب قانون</h2>
+            <br>
+	  		<%= form_tag "/rules", method: "post", :class => 'form-signin' do %>
+	      		<div class="field">
+                    <%= select_tag :event, options_for_select(@events) ,:class => 'form-control' %>
+	      		</div>
+                <br>
+                <div class="field">      
+                    <%= submit_tag("Continue", :class => 'form-control btn btn-primary btn-lg') %>
+                </div>
+	      	<% end %>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+</section>
+

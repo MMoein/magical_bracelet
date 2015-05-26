@@ -1,14 +1,21 @@
-<%= form_tag("/rules", method: "post") do %>
-<div class="container">
-    <div class="col-sm-5 col-sm-offset-3">
-    <%= label_tag(:color, "select color") %>
-    <%= text_field_tag(:color, "66ff00", :class => 'color form-control') %>
-    </div>
-    <div class="col-sm-2 col-sm-offset-3">
-      <br>
-      <%= submit_tag("Continue", :class => 'form-control') %>
-      <br>
-      <%= submit_tag("Back", :name => :Back,  :class => 'form-control') %>
-    </div>
-</div>
-<% end %>
+<section id="lego">
+    <div class="container">
+        <div class="card card-container">
+            <h2 style="text-align:center">انتخاب رنگ</h2>
+            <br>
+             <%= form_tag "/rules", method: "post", :class => 'form-signin' do %>
+                  <%= label_tag(:color, "انتخاب رنگ") %>
+                  <%= text_field_tag(:color, "123456", :class => 'color form-control') %>
+                    <br>
+                    <%= submit_tag("Continue", :class => 'form-control btn btn-primary btn-lg') %>
+                    <br>
+                    <%= submit_tag("Back", :name => :Back,  :class => 'form-control btn btn-primary btn-lg') %>
+                 
+            <% end %>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+</section>
+
+
+

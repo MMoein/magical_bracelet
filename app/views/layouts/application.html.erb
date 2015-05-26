@@ -6,31 +6,27 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link rel="shortcut icon" type="image/png" href="<%= asset_path('logo1.png') %>"/>
 </head>
 <body>
 
 <header id="header">
   <div class="top-bar">
     <div class="row">
-      <div class="col-sm-6 col-xs-4">
-        <div class="top-number"></div>
-      </div>
+      <div class="col-sm-6 col-xs-4"></div>
       <div class="col-sm-6 col-xs-8 col-md-5">
-        <div class="social">
+        <!-- <div class="social"> -->
 
-          <div class="search">
+          <!-- <div class="login"> -->
             <% if user_signed_in? %>
-                <li>
-                  <%= link_to('خروج', destroy_user_session_path, :method => :delete) %>
-                </li>
+                  <%= link_to('خروج', destroy_user_session_path, :method => :delete, :class => 'login') %>
             <% else %>
-                <li>
                   <%= link_to('ورود', new_user_session_path)  %>
-                </li>
             <% end %>
 
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
       </div>
     </div>
     <div class="container">
@@ -75,13 +71,10 @@
       <p class="alert"><%= alert %></p>
     </div>
 </div>
-
 <%end%>
 
-<p>
-<%= yield %>
-</p>
 
+<%= yield %>
 
 <footer id="footer" class="midnight-blue">
   <div class="container">

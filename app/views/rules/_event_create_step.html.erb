@@ -1,27 +1,31 @@
-<div class="container" dir="ltr">
-  <% if @event == 'weather' %>
-      <%= form_tag('/rules',method: :post ) do |f| %>
-          <div class="col-sm-5 col-sm-offset-3">
-            <div class="field">
-              <%= select_tag "type", options_for_select(@types) , :class=>'form-control' %>
-            </div>
-            <div class="field">
-              <%= label_tag :City %><br>
-              <%= text_field_tag :City,"" ,:class=>'form-control' %>
-            </div>
-            <div class="field">
-              <%= label_tag :Country %><br>
-              <%= text_field_tag :Country,"" ,:class=>'form-control' %>
-            </div>
-          </div>
-          <div class="col-sm-3 col-sm-offset-3">
+<section id="weather">
+    <div class="container">
+        <div class="card card-container">
+            <h2 style="text-align:center">چه آب و هوایی؟</h2>
+            <br>  
+            <% if @event == 'weather' %>
+                <%= form_tag "/rules", method: "post", :class => 'form-signin' do %>
+                      <div class="field">
+                        <%= select_tag "type", options_for_select(@types) , :class=>'form-control' %>
+                      </div>
+                      <div class="field">
+                        <%= label_tag :"شهر" %><br>
+                        <%= text_field_tag :City,"" ,:class=>'form-control' %>
+                      </div>
+                      <div class="field">
+                        <%= label_tag :"کشور" %><br>
+                        <%= text_field_tag :Country,"" ,:class=>'form-control' %>
+                      </div>
+                      <br>
+                      <div class="actions">
+                        <%= submit_tag("Continue", :class=>'form-control btn btn-primary btn-lg') %>
+                        <br>
+                        <%= submit_tag("Back", :name => :Back, :class=>'form-control btn btn-primary btn-lg') %>
+                      </div>
+                <%end%>
+            <%end%>
 
-            <div class="actions">
-              <%= submit_tag("Continue", :class=>'form-control') %>
-              <br>
-              <%= submit_tag("Back", :name => :Back, :class=>'form-control') %>
-            </div>
-          </div>
-      <%end%>
-  <%end%>
-</div>
+       </div><!-- /card-container -->
+    </div><!-- /container -->
+
+</section>
