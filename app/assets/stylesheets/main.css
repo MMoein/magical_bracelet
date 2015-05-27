@@ -668,15 +668,15 @@ input.search-form:hover {
 }
 
 #simple {
-  background: #000;
+  background: #D6FFEB;
   background-size: cover;
   height: 700px;
 }
 
 #back {
-  background: #323E34;
-  /*background-size: cover;*/
-  /*height: 700px;*/
+  background: #D6FFEB; /*#323E34 url('./w4.jpg');*/
+  background-size: cover;
+  height: 700px;
 }
 
 #weather {
@@ -686,9 +686,9 @@ input.search-form:hover {
 }
 
 #lego {
-  background: #323E34
-  /*background-size: cover;*/
-  /*height: 700px;*/
+  background: #D6FFEB;
+  background-size: cover;
+  height: 700px;
 }
 
 #services .lead,
